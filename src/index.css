@@ -120,37 +120,6 @@ button {
   text-align: left;
 }
 
-.team-card-compact {
-  min-height: 14.5rem;
-}
-
-
-.hero-grid {
-  align-items: stretch;
-}
-
-.mini-stat-card,
-.fixture-preview,
-.feature-card {
-  min-width: 0;
-}
-
-.mini-stat-card {
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 1rem;
-  backdrop-filter: blur(14px);
-}
-
-.feature-card {
-  min-height: 12.5rem;
-}
-
-.fixture-preview {
-  padding: 1.2rem;
-}
-
 .team-card-overlay {
   position: absolute;
   inset: 0;
@@ -263,21 +232,4 @@ button {
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #475569;
   border-radius: 20px;
-}
-
-@media (max-width: 640px) {
-  .festival-button-primary,
-  .festival-button-secondary {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .team-card,
-  .team-card-compact {
-    min-height: 12rem;
-  }
-
-  .feature-card {
-    min-height: 10rem;
-  }
 }

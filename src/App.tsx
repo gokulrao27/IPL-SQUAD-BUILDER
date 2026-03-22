@@ -106,22 +106,22 @@ function App() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
-            className="relative mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 md:px-8 md:py-10"
+            className="relative mx-auto max-w-7xl px-6 py-10 md:px-10"
           >
-            <section className="festival-panel overflow-hidden rounded-[2rem] border border-white/15 px-5 py-6 shadow-2xl sm:px-7 sm:py-8 lg:px-10 lg:py-10">
-              <div className="hero-grid grid gap-8 xl:grid-cols-[1.15fr_0.85fr] xl:items-center">
-                <div className="min-w-0">
-                  <div className="festival-chip mb-4 inline-flex items-center gap-2">
+            <section className="festival-panel overflow-hidden rounded-[2rem] border border-white/15 px-6 py-8 shadow-2xl md:px-10 md:py-12">
+              <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+                <div>
+                  <div className="festival-chip mb-5 inline-flex items-center gap-2">
                     <WandSparkles className="h-4 w-4" /> IPL 2026 • Multicolour Burst
                   </div>
-                  <h1 className="max-w-3xl text-3xl font-black tracking-tight sm:text-5xl lg:text-6xl">
+                  <h1 className="max-w-4xl text-5xl font-black tracking-tight md:text-7xl">
                     Build a <span className="festival-text">celebration-ready</span> IPL experience.
                   </h1>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-white/75 sm:text-base md:text-lg">
-                    A brighter, cleaner IPL 2026 experience with focused schedule browsing, richer match hubs,
-                    smoother transitions, and builder flows that feel polished across desktop and mobile.
+                  <p className="mt-5 max-w-2xl text-base text-white/75 md:text-lg">
+                    The website now leans into a festival-and-explosion identity with vivid gradients, glowing cards,
+                    smooth transitions, focused schedule browsing, and richer match-day storytelling.
                   </p>
-                  <div className="mt-7 flex flex-wrap gap-3">
+                  <div className="mt-8 flex flex-wrap gap-4">
                     <button onClick={() => setScreen('schedule')} className="festival-button-primary">
                       <CalendarDays className="h-5 w-5" /> View IPL 2026 Schedule
                     </button>
@@ -129,88 +129,49 @@ function App() {
                       <Shield className="h-5 w-5" /> Start with Team Builder
                     </button>
                   </div>
-                  <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                    {[
-                      ['Festival skin', 'Multicolour gradients, glass cards, and sharper spacing.'],
-                      ['Match hubs', 'Detailed venue, captain, and trend panels live inside each fixture.'],
-                      ['Cleaner builder', 'Portraits, slots, and actions are tighter and more readable.'],
-                    ].map(([title, copy]) => (
-                      <div key={title} className="mini-stat-card">
-                        <p className="text-xs font-bold uppercase tracking-[0.28em] text-white/45">Spotlight</p>
-                        <h2 className="mt-2 text-lg font-black">{title}</h2>
-                        <p className="mt-2 text-sm leading-6 text-white/70">{copy}</p>
-                      </div>
-                    ))}
-                  </div>
                 </div>
-                <div className="grid gap-4 lg:grid-cols-3 xl:grid-cols-1">
+                <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
                   {[
                     ['20 Fixtures', 'Schedule page now shows only date, day, and the matchup.'],
                     ['Match Hubs', 'Venue, captains, trends, and squad actions moved into match pages.'],
                     ['Auto-fit Portraits', 'Player and captain imagery now stay neatly framed and aligned.'],
                   ].map(([title, copy], index) => (
-                    <div key={title} className={`festival-card feature-card bg-gradient-to-br ${festivalGradients[index]}`}>
+                    <div key={title} className={`festival-card bg-gradient-to-br ${festivalGradients[index]}`}>
                       <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15">
                         <Sparkles className="h-5 w-5 text-white" />
                       </div>
                       <h2 className="text-xl font-black">{title}</h2>
-                      <p className="mt-2 text-sm leading-6 text-white/75">{copy}</p>
+                      <p className="mt-2 text-sm text-white/75">{copy}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </section>
 
-            <section className="mt-6 grid gap-4 lg:grid-cols-3">
-              {schedule.slice(0, 3).map((match) => {
-                const home = teamMap[match.team1];
-                const away = teamMap[match.team2];
-                if (!home || !away) return null;
-                return (
-                  <button key={match.id} onClick={() => openMatch(match)} className="festival-card fixture-preview text-left hover:-translate-y-1 transition">
-                    <p className="text-xs font-bold uppercase tracking-[0.3em] text-white/45">Match {match.matchNumber}</p>
-                    <div className="mt-3 flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <img src={home.logoUrl} alt={home.shortName} className="h-10 w-10 object-contain" />
-                        <span className="font-black">{home.shortName}</span>
-                      </div>
-                      <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/45">vs</span>
-                      <div className="flex items-center gap-3">
-                        <span className="font-black">{away.shortName}</span>
-                        <img src={away.logoUrl} alt={away.shortName} className="h-10 w-10 object-contain" />
-                      </div>
-                    </div>
-                    <p className="mt-4 text-lg font-black text-amber-300">{match.dateLabel}</p>
-                    <p className="text-sm text-white/65">{match.day} • {match.city}</p>
-                  </button>
-                );
-              })}
-            </section>
-
             <section className="mt-10">
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+              <div className="mb-6 flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm font-bold uppercase tracking-[0.25em] text-white/55">Franchises</p>
-                  <h2 className="text-2xl font-black sm:text-3xl md:text-4xl">Choose your squad and shape the XI.</h2>
+                  <h2 className="text-3xl font-black md:text-4xl">Choose your squad and shape the XI.</h2>
                 </div>
                 <button onClick={() => setScreen('schedule')} className="festival-button-secondary hidden sm:inline-flex">
                   <Trophy className="h-5 w-5" /> Match Centre
                 </button>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
                 {teams.map((team) => (
                   <motion.button
                     key={team.id}
                     whileHover={{ y: -8, scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={() => openTeam(team)}
-                    className={`team-card team-card-compact bg-gradient-to-br ${team.gradient}`}
+                    className={`team-card bg-gradient-to-br ${team.gradient}`}
                   >
                     <div className="team-card-overlay" />
-                    <img src={team.logoUrl} alt={team.name} className="relative z-10 h-14 w-14 object-contain sm:h-16 sm:w-16" />
-                    <div className="relative z-10 mt-5">
-                      <h3 className="text-2xl font-black sm:text-3xl">{team.shortName}</h3>
-                      <p className="mt-2 text-sm font-medium leading-6 text-white/85">{team.name}</p>
+                    <img src={team.logoUrl} alt={team.name} className="relative z-10 h-16 w-16 object-contain" />
+                    <div className="relative z-10 mt-6">
+                      <h3 className="text-3xl font-black">{team.shortName}</h3>
+                      <p className="mt-2 text-sm font-medium text-white/85">{team.name}</p>
                     </div>
                   </motion.button>
                 ))}
